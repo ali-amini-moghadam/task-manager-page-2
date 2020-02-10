@@ -1,0 +1,285 @@
+@font-face {
+    font-family: 'BYekan';
+    src: url('BYekan-webfont.eot') format('eot'),
+}
+body {
+    background-color: #0079bf;
+    font-family: 'BYekan';
+    font-size: 17px;
+    font-weight: 540;
+    overflow: hidden;
+}
+.first_nav {
+    background-color: #0067a3 !important;
+    position: relative;
+    padding: 1px;
+    line-height: 25px;
+}
+li.nav-item {
+    background-color: #4d95be;
+    margin: 3px;
+    border-radius: 3px;
+}
+li.nav-item :hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+li.nav-item a, a {
+    color: #fafcfe !important;
+    padding: 3px 8px !important;   
+    user-select: none;
+    -webkit-user-drag: none;
+}
+li.nav-item a :hover {
+    background: transparent !important;
+}
+.search_input {
+    color: rgba(255, 255, 255, 0.9);
+    background-color: transparent;
+    outline: none;
+    border: none;
+    width: 140px;
+    height: 20px;
+}
+li.logo {
+    position: absolute;
+    right: 45%;
+    top: 0;
+    background: transparent;
+}
+li.logo :hover {
+    background: transparent;
+}
+a.nav-link.logo {
+    font-size: 22px;    
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+a.nav-link.logo :hover {
+    color: white;
+}
+@media screen and (max-width: 750px) {
+    span.board_txt {
+        display: none;
+    }
+    input.search_input {
+        display: none;
+    }
+    li.user_info {
+        display: none;
+    }
+    li.logo {
+        position: relative;
+        left: 5px;
+    }
+}
+
+.line_divider {
+    border-right: 1px solid white;
+    height: 18px;
+    margin: auto 8px;
+}
+
+.second_nav > ul.navbar-nav > li.nav-item a.nav-link {
+    padding: 3px 8px !important;
+}
+.second_nav > ul.navbar-nav > li.nav-item {
+    background-color: #3d99ce;
+}
+.title_box {
+    background: none !important;
+}
+.input_title {
+    display: none;
+    width: 32px;
+    padding: 3px 8px;
+    border: 2px blue solid;
+    border-radius: 4px;
+    outline: none;
+    text-align: center;
+}
+.modal {
+    direction: rtl;
+}
+.modal-backdrop {
+    background-color: transparent;
+}
+.modal-header {
+    padding: 0px 10px;
+    height: 40px;
+    align-items: center;
+}
+button.close {
+    font-size: 22px;
+    outline: none;  
+    user-select: none;
+}
+.modal-title {  
+    position: absolute;
+    top: 0;
+    right: 35%;
+    padding-top: 10px;
+}
+.modal-body {
+    padding: 8px 12px 0 12px;
+}   
+
+label {
+    float: right;
+}
+.form-control {
+    padding: 0;
+    height: 30px;
+    width: 88%;
+}
+.pv_list {
+    user-select: none;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 552px) {
+    .second_navbar_ul_2 {
+        position: absolute;
+        top: 35px;
+        right: 0;
+    }
+    .wrapper-list {
+        position: absolute;
+        top: 115px;
+        right: 0;
+        left: 0;
+    }
+}
+.sidebar
+{
+    display: none;
+    background-color: #f4f5f7;
+    width: 300px;
+    height: 100vh;
+    position: fixed;
+    top: 40px;
+    height: 100vh;
+    border-radius: 0;
+    z-index: 1;
+    transition: all ease-in-out 0.25s;
+}
+.close_sidebar {
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    font-size: 30px !important;
+}
+.sidebar-menu {
+    list-style: none;
+    text-align: right;
+}
+.sidebar-menu-item a {
+    position: relative;
+    color: #172b4d !important;
+}
+.sidebar-menu-item :hover {
+    border-radius: 5px;
+    background-color: #e2e4e9;
+}
+.sidebar-menu-icon {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    font-size: 20px;
+}
+.trello-icon::before {
+    font-family: FontAwesome;
+    content: "\f181";
+}
+.background-icon::before {
+    font-family: FontAwesome;
+    content: "\f0c8";
+    color: blueviolet;
+    background-color: blueviolet;
+    border-radius: 3px;
+}
+.search-icon::before {
+    font-family: FontAwesome;
+    content: "\f002";
+}
+.sticker-icon::before {
+    font-family: FontAwesome;
+    content: "\f249";
+}
+.more-icon::before {
+    font-family: FontAwesome;
+    content: "\f141";
+}
+.butler-icon::before {
+    font-family: FontAwesome;
+    content: "\f0d0";
+}
+.activity-icon::before {
+    font-family: FontAwesome;
+    transform: rotate();
+    content: "\f03a";
+}
+.sidebar-menu-item-context {
+    font-weight: 600;
+    padding: 8px 40px 15px 0 !important;
+}
+.wrapper-list {
+    width: 100vw;
+    height: 100vh;
+    padding: 10px;
+}
+.panel-column {
+    display: inline-block;
+    width: 280px;
+    height: 100vh;
+}
+/* استایل دهی به دکمه اضافه کردن لیست */
+.add-list {
+    box-sizing: border-box;
+    position: relative;
+    background-color: #3d99ce;
+    color: white;
+    width: 100%;
+    height: 35px;
+    padding: 6px 30px 5px 0px !important;
+    border-radius: 5px;
+    text-align: right;
+    text-decoration: none !important;
+}
+.add-list:hover {
+    background-color: #52a4d4;
+    cursor: pointer;
+}
+.add-icon {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+.add-icon::before {
+    font-family: FontAwesome;
+    content: "\f067";
+}
+.list-title-background {
+    position: absolute;
+    background-color: #ebecf0;
+    height: 75px;
+    width: 260px;
+    padding: 5px 10px 0px 5px;
+    border-radius: 3px;
+}
+.list-title-input { 
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 8px;
+    padding: 0 20px;
+    border-radius: 4px;
+    border: solid blue 2px;
+}
+.close-list-title {
+    font-size: 34px !important;
+    font-weight: normal;
+    margin-right: 150px;
+}

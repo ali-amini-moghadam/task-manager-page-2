@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="img/icon/favicon.ico">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/8b9389f8d5.js"></script>   
+    <title>ترلو</title>
+</head>
+<body>
+    <!-- First Navigation -->
+    <nav class="first_nav navbar navbar-expand fixed-top">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i></a>
+            </li>           
+            <li class="nav-item">
+                <a href="index.html" class="nav-link"><i class="fab fa-trello"><span class="ml-2 board_txt font-weight-bold">تابلوها</span></i></a>
+            </li>            
+            <li class="nav-item ">
+                <a href="#" class="nav-link search"><i class="fas fa-search ml"></i><input class="search_input ml-1" type="text" dir="auto" spellcheck="false"></a>
+            </li>
+        </ul> 
+        <ul class="navbar-nav">
+            <li class="nav-item logo">
+                <a href="index.html" class="nav-link logo"><i class="fab fa-trello"><span class="ml-1">Trello</span></i></a>
+            </li> 
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a href="#" class="nav-link"><i class="fas fa-plus"></i></a>
+            </li>
+            <li class="nav-item user_info">
+                <a href="#" class="nav-link"><i class="fas fa-info-circle"></i></a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link"><i class="far fa-bell"></i></a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link"><i class="fas fa-user-circle"></i></a>
+            </li>
+        </ul>
+    </nav>
+        <!-- Second Navigation -->
+    <nav class="second_nav navbar navbar-expand p-0 mt-1">
+
+        <ul class="navbar-nav second_navbar_ul_1">
+            <li class="nav-item title_box" onclick="edit_title()">
+                <a class="nav-link">عنوان</a>
+            </li>
+            <span class="nav-item align-self-center">
+                <input onkeydown="increase_input_width()" class="input_title" type="text" spellcheck="false" dir="auto" value="عنوان">
+            </span>
+            <li class="nav-item" onclick="star_click()">
+                <a href="#" class="nav-link"><i class="far fa-star small"></i></a>
+            </li>
+            <span class="line_divider"></span>
+            <li class="nav-item"> 
+                <a href="#personal_modal_1" class="nav-link" data-toggle="modal" id="personal_item">شخصی</a>
+            </li>
+            <!-- Creating personal modal 1 -->
+            <div class="modal personal_modal" id="personal_modal_1">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">                       
+                        <!-- Modal header -->
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <div class="modal-title">افزودن به تیم</div>
+                        </div> 
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <form action="">
+                                <div class="form-group">
+                                    <label for="sel_team">این تابلو قسمتی از...</label>
+                                    <select name="" id="sel_team" class="form-control mb-3">
+                                        <option value="">تابلوی شخصی (بدون تیم)</option>     
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- Modal footer -->
+                        <div class="modal-footer justify-content-start p-0">
+                            <a href="#personal_modal_2" class="text-secondary" data-toggle="modal" data-dismiss="modal">ایجاد تیم</a>
+                            <button type="submit" class="btn btn-sm btn-success" data-dismiss="modal" onclick="add_team()"> افزودن</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Personal modal 2 (creating team) -->
+            <div class="modal" id="personal_modal_2">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="close" data-dismiss="modal">&times;</button>
+                            <div class="modal-title">ایجاد تیم</div>
+                            <button href="#personal_modal_1" class="close ml-0 pl-0" data-toggle="modal" data-dismiss="modal">&#62;</button>
+                        </div>
+                        <div class="modal-body"> 
+                            <form action="" class="was-validated">
+                                <div class="form-group">
+                                    <label for="#person_name" class="font-weight-bold">نام</label>
+                                    <input id="person_name" type="text" class="form-control" dir="auto" spellcheck="false" autocomplete="off" required>
+                                    <div class="invalid-feedback">این قسمت تکمیل شود</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="#des" class="font-weight-bold">توضیحات</label>
+                                    <textarea name="" id="des" rows="7" class="form-control" dir="auto" required></textarea>
+                                    <div class="invalid-feedback">این قسمت تکمیل شود</div>
+                                </div>
+                                <div class="modal-footer p-0">
+                                    <button type="submit" class="btn btn-block btn-success create_team_btn" onclick="create_team()">ایجاد</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Creating Modal Dialog for PRIVATE item -->
+            <span class="line_divider"></span>
+            <li class="nav-item">
+                <a href="#visibility_modal" class="nav-link" data-toggle="modal">خصوصی <i class="fas fa-lock small"></i></a>
+            </li>
+            <div class="modal" id="visibility_modal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header pb-1">
+                            <button class="close" data-dismiss="modal">&times;</button>
+                            <div class="modal-title mr-4">تغییر وضعیت</div>
+                        </div>
+                        <div class="modal-body p-0">
+                            <ul class="list-group list-group-flush p-0">
+                                <li class="list-group-item list-group-item-action pv_list w-auto pr-3">
+                                    <i class="fas fa-lock text-success d-flex font-weight-bold mb-1 align-items-center"><span class="mr-1">خصوصی <i class="fas fa-check text-success"></i></span></i>
+                                    <span class="d-flex text-right">فقط اعضای اضافه شده میتوانند این صفحه را ببینند و ویرایش کنند.</span>
+                                </li>
+                                <li class="list-group-item list-group-item-action pv_list w-auto pr-3 mb-1">
+                                    <i class="fas fa-user-friends text-success d-flex font-weight-bold mb-1"><span class="mr-1">تیم <i class="fas fa-check text-success d-none"></i></span></i>
+                                    <span class="d-flex text-right">تمام اعضای تیم میتوانند این صفحه را ببینند.برای فعال شدن این گزینه، باید تیمی اضافه کنید.</span>
+                                </li>
+                                <li class="list-group-item list-group-item-action pv_list w-auto pr-3 mb-1 disabled">
+                                    <i class="fas fa-sitemap text-success d-flex font-weight-bold text-muted mb-1"><span class="mr-1">سازمان</span></i> 
+                                    <span class="d-flex text-right">تمام اعضای سازمان میتوانند این صفحه را ببینند.برای فعال شدن این گزینه، باید تیم سازمانی اضافه کنید.</span>
+                                </li>
+                                <li class="list-group-item list-group-item-action pv_list w-auto pr-3 mb-1">
+                                    <i class="fas fa-globe-americas text-success d-flex font-weight-bold mb-1"><span class="mr-1">عمومی <i class="fas fa-check text-success     d-none"></i></span></i>
+                                    <span class="d-flex text-right">هر کسی که در اینترنت(شامل گوگل) میتواند این تابلو را مشاهده نماید. فقط اعضای اضافه شده میتوانند ویرایش کنند.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Invite item -->
+            <span class="line_divider"></span>
+            <li class="nav-item">
+                <a href="#modal_invite" class="nav-link" data-toggle="modal">دعوت</a>
+            </li>
+            <!-- Creating Modal Dialog for INVITE item -->
+            <div class="modal" id="modal_invite">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="close" data-dismiss="modal">&times;</button>
+                            <div class="modal-title">دعوت از دیگران</div>
+                        </div>
+                        <div class="modal-body">
+                            <form action="" class="was-validated">
+                                <div class="form-group">
+                                    <input type="email" class="form-control list-group-item-action text-right mt-2" placeholder=" آدرس ایمیل یا نام وارد کنید" required>
+                                    <div class="invalid-feedback">این قسمت تکمیل شود.</div>
+                                    <textarea name="" id="" rows="5" maxlength="500" class="form-control list-group-item-action text-right pt-2 my-3"> من در حال کار روی این پروژه در ترلو هستم و با تو به اشتراک می گذارم.</textarea>
+                                    <button type="submit" class="btn btn-block btn-success">ارسال دعوت</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer pb-0">
+                            <span class="footer_title font-weight-bold align-items-center ml-auto"><i class="fas fa-link ml-1"></i>دعوت از طریق لینک</span>
+                            <a href="#create_link_section" data-toggle="collapse" class="text-primary"><u>ایجاد لینک</u></a>
+                            <p class="text-right">هر فردی از طریق این لینک میتواند به عنوان عضو به این تابلو اضافه شود.</p>
+                            <div id="create_link_section" class="collapse w-100">
+                                <form action="">
+                                    <div class="form-group d-flex justify-content-between">
+                                        <button class="btn btn-sm btn-success">کپی</button>
+                                        <input type="text" class="form-control w-75" placeholder="بارگذاری ...">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ul>
+        <ul class="navbar-nav second_navbar_ul_2 ml-auto mr-1">
+            <li class="nav-item bulter">
+                <a href="#" class="nav-link">خدمتکار <i class="fas fa-concierge-bell"></i></a>
+            </li>
+            <li class="nav-item open-sidebar">
+                <a href="#" class="nav-link">نمایش منو <i class="fas fa-ellipsis-h"></i></a>
+            </li>
+        </ul>
+    </nav>
+    <!-- Sidebar menu -->
+    <div class="card sidebar">
+        <div class="card-header p-1">
+            <div class="card-title text-center mb-2 font-weight-bold">منو</div>
+            <button type="button" class="close close_sidebar font-weight-normal">&times;</button>
+        </div>
+        <div class="card-body px-2">
+            <ul class="sidebar-menu p-0">
+                <li class="sidebar-menu-item">
+                    <a href="#" class="nav-link sidebar-menu-item-context">
+                        <span class="sidebar-menu-icon trello-icon"></span>
+                        درباره این تابلو
+                        <div class="font-weight-normal">توضیحاتی برای این تابلو اضافه کنید</div>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="#" class="nav-link sidebar-menu-item-context">
+                        <span class="sidebar-menu-icon background-icon"></span>
+                        تعویض تصویر پس زمینه
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="#" class="nav-link sidebar-menu-item-context">
+                        <span class="sidebar-menu-icon search-icon"></span>
+                        جستجوی کارت ها
+                    </a>
+                </li>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="#" class="nav-link sidebar-menu-item-context">
+                        <span class="sidebar-menu-icon sticker-icon"></span>
+                        برچسب ها
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="#" class="nav-link sidebar-menu-item-context">
+                        <span class="sidebar-menu-icon more-icon"></span>
+                        بیشتر
+                    </a>
+                </li>
+                <hr> 
+                <li class="sidebar-menu-item">
+                    <a href="#" class="nav-link sidebar-menu-item-context">
+                        <span class="sidebar-menu-icon butler-icon"></span>
+                        خدمتکار
+                        <div class="font-weight-normal">کارت های خودکار و موارد دیگر</div>
+                    </a>
+                </li>
+                <hr>
+                <li class="sidebar-menu-item">
+                    <a href="#" class="nav-link sidebar-menu-item-context">
+                        <span class="sidebar-menu-icon activity-icon"></span>
+                        فعالیت ها
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div> <!-- پایان نوار کشویی سمت راست -->
+    <div class="wrapper-list">
+        <div class="panel panel-column"> <!-- ایجاد پنل برای لیست کار ها-->
+            <div class="panel-heading add-list" data-toggle="collapse" data-target="#collapse1">
+                اضافه کردن لیست
+                <span class="add-icon"></span>
+            </div>
+            <div class="panel-collapse collapse" id="collapse1">
+                <div class="list-title-background">
+                    <div class="panel-body">
+                        <input type="text" class="list-title-input text-right" placeholder="... عنوان لیست را وارد کنید">
+                    </div>
+                    <div class="panel-footer">
+                        <button type="button" class="add-to-list btn btn-success btn-sm">اضافه کن</button>
+                        <button class="close close-list-title" data-toggle="collapse" data-target="#collapse1">&times;</button>
+                    </div>
+                </div>
+            </div>  
+        </div>
+        <div class="panel panel-column"> <!-- ایجاد پنل برای لیست کار ها-->
+            <div class="panel-heading add-list" data-toggle="collapse" data-target="#collapse2">
+                اضافه کردن لیست
+                <span class="add-icon"></span>
+            </div>
+            <div class="panel-collapse collapse" id="collapse2">
+                <div class="list-title-background">
+                    <div class="panel-body">
+                        <input type="text" class="list-title-input text-right" placeholder="... عنوان لیست را وارد کنید">
+                    </div>
+                    <div class="panel-footer">
+                        <button type="button" class="add-to-list btn btn-success btn-sm">اضافه کن</button>
+                        <button class="close close-list-title" data-toggle="collapse" data-target="#collapse2">&times;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>
