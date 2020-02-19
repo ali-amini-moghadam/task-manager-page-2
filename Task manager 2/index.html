@@ -14,25 +14,28 @@
     <title>ترلو</title>
 </head>
 <body>
-    <!-- First Navigation -->
-    <nav class="first_nav navbar navbar-expand fixed-top">
-        <ul class="navbar-nav mr-auto">
+    <!-- شروع نوار نویگیشن افقی اول -->
+    <nav class="navbar navbar-expand first_nav p-0">
+        <!-- Part1 -->
+        <ul class="navbar-nav flex-grow-1">
             <li class="nav-item">
                 <a href="index.html" class="nav-link"><i class="fas fa-home"></i></a>
             </li>           
             <li class="nav-item">
                 <a href="index.html" class="nav-link"><i class="fab fa-trello"><span class="ml-2 board_txt font-weight-bold">تابلوها</span></i></a>
             </li>            
-            <li class="nav-item ">
+            <li class="nav-item">
                 <a href="#" class="nav-link search"><i class="fas fa-search ml"></i><input class="search_input ml-1" type="text" dir="auto" spellcheck="false"></a>
             </li>
         </ul> 
-        <ul class="navbar-nav">
+        <!-- Trello Logo  -->
+        <ul class="navbar-nav flex-grow-1">
             <li class="nav-item logo">
-                <a href="index.html" class="nav-link logo"><i class="fab fa-trello"><span class="ml-1">Trello</span></i></a>
-            </li> 
+                <a href="index.html" class="nav-link trello-logo"><i class="fab fa-trello"><span class="ml-1">Trello</span></i></a>
+            </li>
         </ul>
-        <ul class="navbar-nav ml-auto">
+        <!-- part2 -->
+        <ul class="navbar-nav">
             <li class="nav-item">
                 <a href="#" class="nav-link"><i class="fas fa-plus"></i></a>
             </li>
@@ -47,17 +50,17 @@
             </li>
         </ul>
     </nav>
-        <!-- Second Navigation -->
-    <nav class="second_nav navbar navbar-expand p-0 mt-1">
-
-        <ul class="navbar-nav second_navbar_ul_1">
-            <li class="nav-item title_box" onclick="edit_title()">
+    <!-- پایان نوار افقی اول -->
+    <!-- شروع نوار نویگیشن افقی دوم -->
+    <nav class="navbar navbar-expand second_nav py-2 px-1">
+        <ul class="navbar-nav second_navbar_ul_1 flex-grow-1">
+            <li class="nav-item title_box">
                 <a class="nav-link">عنوان</a>
             </li>
             <span class="nav-item align-self-center">
-                <input onkeydown="increase_input_width()" class="input_title" type="text" spellcheck="false" dir="auto" value="عنوان">
+                <input class="input_title" type="text" spellcheck="false" dir="auto" value="عنوان">
             </span>
-            <li class="nav-item" onclick="star_click()">
+            <li class="nav-item star_item">
                 <a href="#" class="nav-link"><i class="far fa-star small"></i></a>
             </li>
             <span class="line_divider"></span>
@@ -196,7 +199,8 @@
                 </div>
             </div>
         </ul>
-        <ul class="navbar-nav second_navbar_ul_2 ml-auto mr-1">
+        <!-- آیتم های خدمتکار و نمایش منو -->
+        <ul class="navbar-nav second_navbar_ul_2 ">
             <li class="nav-item bulter">
                 <a href="#" class="nav-link">خدمتکار <i class="fas fa-concierge-bell"></i></a>
             </li>
@@ -205,7 +209,8 @@
             </li>
         </ul>
     </nav>
-    <!-- Sidebar menu -->
+    <!-- پایان نوار افقی دوم -->
+    <!-- ایجاد منوی سمت راست به همراه انیمیشن -->
     <div class="card sidebar">
         <div class="card-header p-1">
             <div class="card-title text-center mb-2 font-weight-bold">منو</div>
@@ -262,39 +267,21 @@
                 </li>
             </ul>
         </div>
-    </div> <!-- پایان نوار کشویی سمت راست -->
-    <div class="wrapper-list">
-        <div class="panel panel-column"> <!-- ایجاد پنل برای لیست کار ها-->
-            <div class="panel-heading add-list" data-toggle="collapse" data-target="#collapse1">
-                اضافه کردن لیست
+    </div>
+    <!-- پایان نوار کشویی سمت راست -->
+    <div class="board-canvas">
+        <div class="each-list-col mx-2">
+            <button class="btn btn-block add-list text-right py-1">
                 <span class="add-icon"></span>
-            </div>
-            <div class="panel-collapse collapse" id="collapse1">
-                <div class="list-title-background">
-                    <div class="panel-body">
-                        <input type="text" class="list-title-input text-right" placeholder="... عنوان لیست را وارد کنید">
-                    </div>
-                    <div class="panel-footer">
-                        <button type="button" class="add-to-list btn btn-success btn-sm">اضافه کن</button>
-                        <button class="close close-list-title" data-toggle="collapse" data-target="#collapse1">&times;</button>
-                    </div>
+                اضافه کردن لیست
+            </button>
+            <div class="card list-title-window px-1">
+                <div class="card-body p-0">
+                    <input type="text" class="input-list-title" placeholder="عنوان لیست را وارد کنید">
                 </div>
-            </div>  
-        </div>
-        <div class="panel panel-column"> <!-- ایجاد پنل برای لیست کار ها-->
-            <div class="panel-heading add-list" data-toggle="collapse" data-target="#collapse2">
-                اضافه کردن لیست
-                <span class="add-icon"></span>
-            </div>
-            <div class="panel-collapse collapse" id="collapse2">
-                <div class="list-title-background">
-                    <div class="panel-body">
-                        <input type="text" class="list-title-input text-right" placeholder="... عنوان لیست را وارد کنید">
-                    </div>
-                    <div class="panel-footer">
-                        <button type="button" class="add-to-list btn btn-success btn-sm">اضافه کن</button>
-                        <button class="close close-list-title" data-toggle="collapse" data-target="#collapse2">&times;</button>
-                    </div>
+                <div class="card-footer list-title-footer p-0">
+                    <button type="button" class="btn btn-success btn-sm">اضافه کن</button>
+                    <button type="button" class="close-list-title">&times;</button>
                 </div>
             </div>
         </div>
