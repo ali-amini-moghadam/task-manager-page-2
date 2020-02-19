@@ -1,6 +1,6 @@
 var rep_star = 'F'; // 'T' represent TRUE and 'F'represent FALSE repetation ...
-var rep_title = 'F'; // 'T' represent TRUE and 'F' represent FALSE repetation ...
-
+var star_item = document.querySelector('.star_item');
+star_item.addEventListener('click', star_click);
 function star_click() {
     var star_icon = document.getElementsByClassName('fa-star')[0];
     if(rep_star == 'F') {
@@ -91,19 +91,19 @@ function close_sidebar()
         }
     });
 }
-var add_list_btn = document.querySelectorAll('.add-list');
-var list_title_input = document.querySelector('.list-title-input');  //open list button ...
-add_list_btn[0].addEventListener('click', open_add_title_panel);
-function open_add_title_panel() {
-    add_list_btn[0].style.display = 'none';
+// list part ...
+var add_list = document.querySelector('.add-list');
+var list_title_window = document.querySelector('.list-title-window');
+add_list.addEventListener('click', open_list_title);
+function open_list_title() {
+    add_list.style.opacity = '0';
+    add_list.style.display = 'none';
+    list_title_window.style.display = 'block';
 }
-var close_list_btn = document.querySelectorAll('.close-list-title');  //close list button ...
-close_list_btn[0].addEventListener('click', close_list_title);
+var close_title_list_btn = document.querySelector('.close-list-title');
+close_title_list_btn.addEventListener('click', close_list_title);
 function close_list_title() {
-    add_list_btn.style.display = 'block';
-}
-var add_to_list = document.querySelector('.add-to-list'); //add to list btn ...
-add_to_list.addEventListener('click', creating_list_item_panel);
-function creating_list_item_panel() {
-    
+    list_title_window.style.display = 'none';
+    add_list.style.opacity = '1';
+    add_list.style.display = 'block';
 }
