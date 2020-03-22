@@ -92,15 +92,17 @@ function close_sidebar()
         }
     });
 }
-// GLOBAL VARIABLES
+// GLOBAL VARIABLES ELEMENTS
 var board_canvas = document.querySelector('.board-canvas');
 var add_list_btn_1 = document.querySelector('.add-list');
 var each_list_col = document.querySelector('.each-list-col');
 var list_name_input;
 var list_title_window;
 var list_header_name_input;
-var element_already_exist = false;
+var card_composer_textarea;
 var list_title_name;
+var element_already_exist = false;
+var continuous_list = false;
 //Helper function for set multiple attributes to an element
 function setAttributes(elem, obj) {
     for(var property in obj) {
@@ -109,11 +111,13 @@ function setAttributes(elem, obj) {
 }
 // INCLUDE ALL OF THE DYNAMIC ELEMENTS
 add_list_btn_1.addEventListener('click', open_list_title_window);
-function open_list_title_window() 
+function open_list_title_window()
 {
     if(!element_already_exist) {
-        add_list_btn_1 = this;
-        add_list_btn_1.classList.add('d-none');
+        if(!continuous_list) {
+            add_list_btn_1 = this;
+            add_list_btn_1.classList.add('d-none');
+        }
         list_title_window = document.createElement('div');
         list_title_window.setAttribute('class','card list-title-window text-right p-1');
         each_list_col.appendChild(list_title_window);
@@ -149,6 +153,8 @@ function open_list_title_window()
         add_list_btn_2.addEventListener('click', function() { // click to add list button 2
             if(list_name_input.value != "") {
                 // CREATING LIST OF CARDS AREA -->-->-->-->-->-->-->-->-->-->-->-->-->-->-->-->-->-->-->-->
+                add_list_btn_1.remove(); //Saving space
+                list_title_window.remove(); // Saving space
                 list_title_name = list_name_input.value;
                 list_title_window.classList.add('d-none');
                 var list_content_canvas = document.createElement('div');
@@ -168,6 +174,9 @@ function open_list_title_window()
                 var extra_menu_icon = document.createElement('span');
                 extra_menu_icon.setAttribute('class', 'extra-menu-icon px-2 ml-1');
                 list_content_header.appendChild(extra_menu_icon);
+                var card_items_container = document.createElement('div');
+                card_items_container.setAttribute('class', 'card-body list-group p-0 mb-1');
+                list_content_canvas.appendChild(card_items_container);
                 const add_card_btn_1 = document.createElement('button');
                 add_card_btn_1.setAttribute('class', 'btn btn-block add-card-btn py-1 px-2 text-right');
                 add_card_btn_1.innerHTML = 'اضافه کردن کارت';
@@ -194,7 +203,7 @@ function open_list_title_window()
                     var card_body = document.createElement('div');
                     card_body.setAttribute('class', 'card-body p-0');
                     card_composer_container.appendChild(card_body);
-                    var card_composer_textarea = document.createElement('textarea');
+                    card_composer_textarea = document.createElement('textarea');
                     setAttributes(card_composer_textarea, {
                         "class": "card-composer-textarea w-100 p-2",
                         "placeholder": "... عنوان کارت را وارد کنید"
@@ -216,12 +225,18 @@ function open_list_title_window()
                     card_composer_textarea.addEventListener('keydown', function(event) {
                         if(event.code == 'Enter' && card_composer_textarea.value != "") {
                             add_card_btn_2.click();
+                            event.preventDefault();
                         }
                     });
-                    add_card_btn_2.addEventListener('click', function() { //creating card dynamically
+                    add_card_btn_2.addEventListener('click', function() {
                         if(card_composer_textarea.value != "") {
                             var card_name = card_composer_textarea.value;
-                            card_composer_container.classList.add('d-none');
+                            var card_items = document.createElement('a');
+                            card_items.setAttribute('class', 'list-group-item list-group-item-action card-items mb-1');
+                            card_items.innerHTML = card_name;
+                            card_composer_textarea.value = "";
+                            card_items_container.appendChild(card_items);
+                            card_composer_textarea.value = "";
                         }
                     });
                     close_card_composer_btn.addEventListener('click', function() {
@@ -234,7 +249,7 @@ function open_list_title_window()
                 each_list_col.setAttribute('class', 'each-list-col ml-2');
                 board_canvas.appendChild(each_list_col);
                 add_list_btn_1 = document.createElement('button');
-                add_list_btn_1.setAttribute('class', 'btn btn-block add-list text-right py-1');
+                add_list_btn_1.setAttribute('class', 'btn btn-block add-list text-right d-none py-1');
                 add_list_btn_1.innerHTML = 'اضافه کردن لیست';
                 add_list_btn_1.addEventListener('click', open_list_title_window);
                 each_list_col.appendChild(add_list_btn_1);
@@ -242,6 +257,8 @@ function open_list_title_window()
                 plus_icon.setAttribute('class', 'plus-icon ml-1');
                 add_list_btn_1.appendChild(plus_icon);
                 element_already_exist = false;
+                continuous_list = true;
+                open_list_title_window();
             }
         }); // END OF CLICK TO ADD LIST BUTTON 2
         close_list_btn.addEventListener('click', function() {
