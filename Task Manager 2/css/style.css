@@ -222,7 +222,7 @@ button.close {
 }
 /* each card in seperate column */
 .each-list-col {
-    width: 280px; /* width of each list columns */
+    width: 270px; /* width of each list columns */
     height: 100%;
 }
 .add-list {
@@ -291,6 +291,15 @@ input[placeholder], textarea[placeholder] {
     border: 2px solid blueviolet;
     border-radius: 3px;
     cursor: text;
+}
+.card-items {
+    color: black !important;
+    box-shadow: 0px .3px 1px rgb(140, 140, 140);
+    border-radius: 5px;
+    height: 35px;
+}
+.card-items:hover {
+    cursor: pointer;
 }
 .add-card-btn {
     color: #66748a;
